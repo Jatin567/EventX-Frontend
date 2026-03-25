@@ -14,7 +14,7 @@ const EventsPage = ({ onBook }) => {
     const [loginWarning, setLoginWarning] = useState(false);
 
     useEffect(() => {
-        axios.get('https://eventx-backend.onrender.com/api/events')
+        axios.get('https://eventx-backend-3.onrender.com/api/events')
             .then(res => {
                 setEvents(res.data);
                 setFilteredEvents(res.data);

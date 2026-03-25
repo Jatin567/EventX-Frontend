@@ -131,14 +131,14 @@ const CheckoutPage = () => {
             // If we reach here, payment was authorized by the user in the sheet
 
             // Step 1: Create the booking
-            const bookingRes = await axios.post('https://eventx-backend.onrender.com/api/bookings', {
+            const bookingRes = await axios.post('https://eventx-backend-3.onrender.com/api/bookings', {
                 userId: user.id,
                 eventId: event.id,
                 numberOfTickets: numTickets,
             }, { headers: { Authorization: `Bearer ${token}` } });
 
             // Step 2: Record the payment in our backend
-            await axios.post('https://eventx-backend.onrender.com/api/payments', {
+            await axios.post('https://eventx-backend-3.onrender.com/api/payments', {
                 bookingId: bookingRes.data.id,
                 amount: totalPrice,
                 paymentMethod: 'GOOGLE_PAY',

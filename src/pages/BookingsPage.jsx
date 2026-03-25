@@ -10,7 +10,7 @@ const BookingsPage = () => {
 
     useEffect(() => {
         if (user && token) {
-            axios.get(`https://eventx-backend.onrender.com/api/bookings/user/${user.id}`, {
+            axios.get(`https://eventx-backend-3.onrender.com/api/bookings/user/${user.id}`, {
                 headers: { Authorization: `Bearer ${token}` }
             })
             .then(res => {

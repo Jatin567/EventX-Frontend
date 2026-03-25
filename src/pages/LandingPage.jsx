@@ -8,7 +8,7 @@ const LandingPage = ({ onBook }) => {
     const [events, setEvents] = useState([]);
 
     useEffect(() => {
-        axios.get('https://eventx-backend.onrender.com/api/events')
+        axios.get('https://eventx-backend-3.onrender.com/api/events')
             .then(res => setEvents(res.data.slice(0, 3)))
             .catch(err => console.error(err));
     }, []);

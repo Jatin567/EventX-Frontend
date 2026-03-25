@@ -50,14 +50,14 @@ const EventFormModal = ({ event, token, onClose, onSaved }) => {
             const data = new FormData();
             data.append('file', file);
             // DO NOT set Content-Type manually - browser must set it with the correct multipart boundary
-            const res = await axios.post('https://eventx-backend.onrender.com/api/upload', data, {
+            const res = await axios.post('https://eventx-backend-3.onrender.com/api/upload', data, {
                 headers: { 
                     Authorization: `Bearer ${token}`
                 }
             });
             const imageUrl = res.data.imageUrl.startsWith('http') 
                 ? res.data.imageUrl 
-                : `https://eventx-backend.onrender.com${res.data.imageUrl}`;
+                : `https://eventx-backend-3.onrender.com${res.data.imageUrl}`;
             setForm(prev => ({ ...prev, imageUrl }));
             setImagePreview(imageUrl);
         } catch (err) {
@@ -86,11 +86,11 @@ const EventFormModal = ({ event, token, onClose, onSaved }) => {
                 eventDate: new Date(form.eventDate).toISOString().slice(0, 19)
             };
             if (isEdit) {
-                await axios.put(`https://eventx-backend.onrender.com/api/events/${event.id}`, payload, {
+                await axios.put(`https://eventx-backend-3.onrender.com/api/events/${event.id}`, payload, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
             } else {
-                await axios.post('https://eventx-backend.onrender.com/api/events', payload, {
+                await axios.post('https://eventx-backend-3.onrender.com/api/events', payload, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
             }
@@ -295,7 +295,7 @@ const AdminDashboard = () => {
     const fetchEvents = async () => {
         setLoading(true);
         try {
-            const res = await axios.get('https://eventx-backend.onrender.com/api/events');
+            const res = await axios.get('https://eventx-backend-3.onrender.com/api/events');
             setEvents(res.data);
         } catch (e) {
             console.error(e);
@@ -306,7 +306,7 @@ const AdminDashboard = () => {
 
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`https://eventx-backend.onrender.com/api/events/${id}`, {
+            await axios.delete(`https://eventx-backend-3.onrender.com/api/events/${id}`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             showToast('Event deleted successfully!');
