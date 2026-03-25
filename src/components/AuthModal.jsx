@@ -40,7 +40,7 @@ const AuthModal = ({ isOpen, onClose, initialType = 'login' }) => {
 
         try {
             if (type === 'login') {
-                const res = await axios.post('http://localhost:8080/api/auth/login', {
+                const res = await axios.post('https://eventx-backend.onrender.com/api/auth/login', {
                     email: formData.email,
                     password: formData.password,
                 });
@@ -53,7 +53,7 @@ const AuthModal = ({ isOpen, onClose, initialType = 'login' }) => {
                     password: formData.password,
                     adminPasscode: showPasscode ? formData.adminPasscode : '',
                 };
-                const res = await axios.post('http://localhost:8080/api/auth/register', payload);
+                const res = await axios.post('https://eventx-backend.onrender.com/api/auth/register', payload);
                 const msg = res.data?.message || 'Registration successful!';
                 alert(msg + ' Please login.');
                 setType('login');
