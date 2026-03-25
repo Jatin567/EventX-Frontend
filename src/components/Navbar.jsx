@@ -48,7 +48,7 @@ const Navbar = ({ onOpenAuth }) => {
                 <Link to="/" style={linkStyle} className="nav-link">Home</Link>
                 <Link to="/events" style={linkStyle} className="nav-link">Events</Link>
                 {user && <Link to="/bookings" style={linkStyle} className="nav-link">Bookings</Link>}
-                {user?.role === 'ADMIN' && <Link to="/admin" style={linkStyle} className="nav-link">Admin</Link>}
+                <Link to="/admin" style={linkStyle} className="nav-link">Admin</Link>
             </div>
 
             {/* Right side area (Search & Membership) */}
@@ -81,22 +81,30 @@ const Navbar = ({ onOpenAuth }) => {
                 {user ? (
                     <button onClick={logout} style={{ background: 'transparent', color: '#fff', border: 'none', cursor: 'pointer', fontSize: '15px' }}>Logout</button>
                 ) : (
-                    <button 
-                        onClick={() => onOpenAuth('register')} 
-                        style={{ 
-                            padding: '10px 24px', 
-                            borderRadius: '20px', 
-                            backgroundColor: '#FFD700',
-                            color: '#000',
-                            fontWeight: '700',
-                            fontSize: '14px',
-                            border: 'none',
-                            cursor: 'pointer',
-                            letterSpacing: '0.5px'
-                        }}
-                    >
-                        Sign In
-                    </button>
+                    <div className="flex items-center gap-4">
+                        <button 
+                            onClick={() => onOpenAuth('login')} 
+                            style={{ background: 'transparent', color: '#fff', border: 'none', cursor: 'pointer', fontSize: '15px', fontWeight: '600' }}
+                        >
+                            Sign In
+                        </button>
+                        <button 
+                            onClick={() => onOpenAuth('register')} 
+                            style={{ 
+                                padding: '10px 24px', 
+                                borderRadius: '20px', 
+                                backgroundColor: '#FFD700',
+                                color: '#000',
+                                fontWeight: '700',
+                                fontSize: '14px',
+                                border: 'none',
+                                cursor: 'pointer',
+                                letterSpacing: '0.5px'
+                            }}
+                        >
+                            Join Now
+                        </button>
+                    </div>
                 )}
             </div>
 

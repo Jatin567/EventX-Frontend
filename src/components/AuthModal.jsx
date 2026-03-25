@@ -25,6 +25,14 @@ const AuthModal = ({ isOpen, onClose, initialType = 'login' }) => {
     const { login } = useAuth();
     const [error, setError] = useState('');
 
+    React.useEffect(() => {
+        if (isOpen) {
+            setType(initialType);
+            setError('');
+            setFormData({ name: '', email: '', password: '', adminPasscode: '' });
+        }
+    }, [isOpen, initialType]);
+
     if (!isOpen) return null;
 
     const handleChange = (field) => (e) => setFormData({ ...formData, [field]: e.target.value });
